@@ -28,7 +28,7 @@ This repository contains an end-to-end R workflow to:
 
 <p align="center">
   <a id="figure-2"></a>
-  <img src="README_images/Isodontia_mexicana_pn_nrt_all_by_continent.png" alt="Isodontia_mexicana_histogram" width="60%" />
+  <img src="README_images/Isodontia_mexicana_pn_nrt_all_by_continent.png" alt="Isodontia_mexicana_histogram" width="75%" />
 </p>
 
 <p align="center"><strong>Figure 2</strong> : Predictions by the Pl@ntNet API of plant genera previously identified by the same API as having flowers in images of Isodontia mexicana published on iNaturalist between 2007 and 2021. Only genera with at least 5 occurrences are shown, representing 600 of the 708 observations. The values at the ends of the bars represent the total number of observations per continent.</a>.</p>
@@ -39,7 +39,7 @@ This repository contains an end-to-end R workflow to:
 
 <p align="center">
   <a id="figure-3"></a>
-  <img src="README_images/Isodontia_mexicana_pn_nrt_all_experts_cf_organ.png" alt="Isodontia_mexicana_cf" width="40%" />
+  <img src="README_images/Isodontia_mexicana_pn_nrt_all_experts_cf_organ.png" alt="Isodontia_mexicana_cf" width="60%" />
 </p>
 
 <p align="center"><strong>Figure 3</strong> : Prediction by the Pl@ntNet APIof whether or not a flower is present in the image.  A confidence score threshold of 0.5 was used for classification as a “plant with flower” below this threshold, the image is classified as “Plant without flower or no plant”.</p>
