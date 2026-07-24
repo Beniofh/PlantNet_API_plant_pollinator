@@ -1,0 +1,7 @@
+"taxon_level";"expected_taxon";"n_samples";"accuracy"
+"genus";"Cirsium";1;1
+"genus";"Euonymus";1;1
+"genus";"Mentha";1;1
+"family";"Asteraceae";1;1
+"family";"Celastraceae";1;1
+"family";"Lamiaceae";1;1

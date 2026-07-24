@@ -1,0 +1,213 @@
+# Author:       Benjamin Bourel
+# Created:      2026-07-23
+# Modified:     2026-07-24
+# Version:      1.0
+
+# Description:
+# This configuration file is used to set up the parameters for the scripts in this 
+# project. The configuration file is divided into three sections: initialisation, default, and test.
+
+#==================================================================================================
+# Initialisation version for setting up the configuration the general parameters for all the scripts
+# and for all versions (default and test).
+#==================================================================================================
+initialisation:
+  # The name of the configuration to use.
+  # Options: default or test.
+  yaml_config: default
+  # The API key for the Pl@ntNet API. You can obtain a free API key by registering at
+  # https://my.plantnet.org. Please copy your API key in this config.yaml file in the
+  # root directory of the project and save it before running the scripts.
+  # /!\ You must put your keyword in quotation marks  
+  plantnet_api_key: "2b10yOzNH0TOmG9yAYu5rY47O"
+  # PlantNet API endpoint for flora. It may stop working or change 
+  # depending on updates to PlantNet If it stops working, check the website
+  # https://my-api.plantnet.org to update it.
+  plantnet_api_project_url: "https://my-api.plantnet.org//v2/projects"
+  # PlantNet API endpoint for identification. It may stop working or change 
+  # depending on updates to PlantNet If it stops working, check the website
+  # https://my-api.plantnet.org to update it.
+  plantnet_api_identify_url: "https://my-api.plantnet.org/v2/identify"
+  # iNaturalist API endpoint for observations. It may stop working or change 
+  # depending on updates to iNaturalist. If it stops working, check the website
+  # https://api.inaturalist.org/ to update it.
+  inat_obs_url : "https://api.inaturalist.org/v1/observations"
+
+#==================================================================================================
+# Default version for reproducing the results of the article and in this GitHub repository. 
+# Your free standard Pl@ntNet API key only allows you to make 200 requests per day.However,
+# in this case you need 2,500 requests. You must request an increase in the number of requests 
+# for your free standard Pl@ntNet API key in order to run these scripts. You can do this free of
+# charge directly on your account page at my.plantnet.org.
+#==================================================================================================
+default:
+  global: 
+    # the base name for the output file of all scripts. 
+    base_file_name: "Isodontia_mexicana"
+  # For the script 0_1_inat_data_creation.R
+  0_1_inat_data_creation:
+    # Species name to fetch observations for. It must be the scientific name of the species.
+    input_taxon_name: "Isodontia mexicana"
+    # Quality grade filter. Options: "research", "needs_id", "casual".
+    quality_grade: "research"
+    # Optional year filter.
+    # Set to FALSE to fetch all years, or TRUE and define year_min/year_max.
+    use_year_filter: TRUE #TRUE or FALSE
+    year_min: 2007
+    year_max: 2021
+    # Optional geographic bounding box filter.
+    # Set to TRUE and provide min/max lat/lon to restrict observations.
+    use_geo_bbox: FALSE #TRUE or FALSE
+    swlat: 43.5
+    swlng: 3.8
+    nelat: 43.7
+    nelng: 4.0
+    # Settings for pagination and retries
+    # number of observations per page (max 200)
+    per_page: 200
+    # maximum number of pages to fetch (max 100)
+    max_pages: 100
+    # number of retries for failed requests
+    max_retries: 6
+    # base delay in seconds between requests 
+    # (exponential backoff is applied on retries)
+    base_delay_sec: 0.4
+  # For the script 1_1_identify_plantnet_top5.R 
+  1_1_identify_plantnet_top5:
+    # You can choose a more specific flora. 
+    # See: https://my.plantnet.org/doc/references/newfloras.
+    # /!\ /!\ /!\ /!\ /!\ 
+    # If you choose "auto", the script will use the "flora" column in the input CSV
+    # file to determine the flora for each image. If you choose "auto" user must run
+    # the script "0_2_add_plantnet_flora.R" first to add the flora information in 
+    # the output CSV file of the script "0_1_inat_data_creation.R".
+    # /!\ /!\ /!\ /!\ /!\ 
+    project_type: "all" #"all" ; "auto" 
+    # The number of top predictions to retrieve from the Pl@ntNet API.
+    nb_results: 5
+    # The "no_reject" parameter determines whether to include rejected predictions in the results.
+    # Set to "true" to include rejected predictions, or "false" to exclude them. 
+    # see https://my.plantnet.org/doc/getting-started/faq (chapter "rejection") for details
+    no_reject: "true"
+  # For the script 1_2_filter_indentify_plantnet_top5.R
+  1_2_filter_indentify_plantnet_top5:
+    # The threshold for filtering Plant_flower predictions based on the organ probability score.
+    # Plant_flower predictions with a probability score below this threshold will be 
+    # filtered into no_plant_flower.
+    # this value is re-used in the script 1_3_histogram_pred_by_area.R and 2_2_metric_organ.R
+    probability_threshold_flower: 0.5
+    # The threshold for filtering taxon predictions based on the taxon probability score.
+    # Predictions with a probability score below this threshold will be filtered out.
+    # this value is re-used in the script 1_3_histogram_pred_by_area.R, 2_2_metric_organ.R 
+    # and 2_3_metric_taxon.R
+    probability_threshold_taxon: 0.5
+  # For the script 1_3_histogram_pred_by_area.R
+  1_3_histogram_pred_by_area:
+    # The column to be used for the histogram
+    # Options: "predicted_genus" or "predicted_family"
+    study_col: "predicted_genus"
+    # Define the names and geographic bounding boxes of the two groups 
+    # to compare
+    group_1: "North America"
+    long_min_1: -140
+    long_max_1: -60
+    lat_min_1: 25
+    lat_max_1: 50
+    group_2: "Europe"
+    long_min_2: -20 
+    long_max_2: 35
+    lat_min_2: 35
+    lat_max_2: 55
+    # define the name of the grouping variable for the plot
+    group_name: "continent"
+    # minimum number of occurrences for a taxon to be included in the plot
+    sum_occ_min: 5
+
+#==================================================================================================
+# Version for testing the scripts with a limited number of observations and years.
+# For test with a free standard Pl@ntNet API key (the number of observations is limited to 200/day).
+# Changes made to the test version compared with the default version are indicated by the comment
+# "# modified for test version" in the config.yaml file.
+#==================================================================================================
+test:
+  global: 
+    # the base name for the output file of all scripts. 
+    base_file_name: "Isodontia_mexicana_test" # modified for test version
+  # For the script 0_1_inat_data_creation.R
+  0_1_inat_data_creation:
+    # Species name to fetch observations for. It must be the scientific name of the species.
+    input_taxon_name: "Isodontia mexicana"
+    # Quality grade filter. Options: "research", "needs_id", "casual".
+    quality_grade: "research"
+    # Optional year filter.
+    # Set to FALSE to fetch all years, or TRUE and define year_min/year_max.
+    use_year_filter: TRUE #TRUE or FALSE
+    year_min: 2016 # modified for test version
+    year_max: 2016 # modified for test version
+    # Optional geographic bounding box filter.
+    # Set to TRUE and provide min/max lat/lon to restrict observations.
+    use_geo_bbox: FALSE #TRUE or FALSE
+    swlat: 43.5
+    swlng: 3.8
+    nelat: 43.7
+    nelng: 4.0
+    # Settings for pagination and retries
+    # number of observations per page (max 200)
+    per_page: 200
+    # maximum number of pages to fetch (max 100)
+    max_pages: 100
+    # number of retries for failed requests
+    max_retries: 6
+    # base delay in seconds between requests 
+    # (exponential backoff is applied on retries)
+    base_delay_sec: 0.4
+  # For the script 1_1_identify_plantnet_top5.R 
+  1_1_identify_plantnet_top5:
+    # You can choose a more specific flora. 
+    # See: https://my.plantnet.org/doc/references/newfloras.
+    # /!\ /!\ /!\ /!\ /!\ 
+    # If you choose "auto", the script will use the "flora" column in the input CSV
+    # file to determine the flora for each image. If you choose "auto" user must run
+    # the script "0_2_add_plantnet_flora.R" first to add the flora information in 
+    # the output CSV file of the script "0_1_inat_data_creation.R".
+    # /!\ /!\ /!\ /!\ /!\ 
+    project_type: "all" #"all" ; "auto" 
+    # The number of top predictions to retrieve from the Pl@ntNet API.
+    nb_results: 5
+    # The "no_reject" parameter determines whether to include rejected predictions in the results.
+    # Set to "true" to include rejected predictions, or "false" to exclude them. 
+    # see https://my.plantnet.org/doc/getting-started/faq (chapter "rejection") for details
+    no_reject: "true"
+  # For the script 1_2_filter_indentify_plantnet_top5.R
+  1_2_filter_indentify_plantnet_top5:
+    # The threshold for filtering Plant_flower predictions based on the organ probability score.
+    # Plant_flower predictions with a probability score below this threshold will be 
+    # filtered into no_plant_flower.
+    # this value is re-used in the script 1_3_histogram_pred_by_area.R and 2_2_metric_organ.R
+    probability_threshold_flower: 0.5
+    # The threshold for filtering taxon predictions based on the taxon probability score.
+    # Predictions with a probability score below this threshold will be filtered out.
+    # this value is re-used in the script 1_3_histogram_pred_by_area.R, 2_2_metric_organ.R 
+    # and 2_3_metric_taxon.R
+    probability_threshold_taxon: 0.5
+  # For the script 1_3_histogram_pred_by_area.R
+  1_3_histogram_pred_by_area:
+    # The column to be used for the histogram
+    # Options: "predicted_genus" or "predicted_family"
+    study_col: "predicted_genus"
+    # Define the names and geographic bounding boxes of the two groups 
+    # to compare
+    group_1: "North America"
+    long_min_1: -140
+    long_max_1: -60
+    lat_min_1: 25
+    lat_max_1: 50
+    group_2: "Europe"
+    long_min_2: -20 
+    long_max_2: 35
+    lat_min_2: 35
+    lat_max_2: 55
+    # define the name of the grouping variable for the plot
+    group_name: "continent"
+    # minimum number of occurrences for a taxon to be included in the plot
+    sum_occ_min: 0 # modified for test version

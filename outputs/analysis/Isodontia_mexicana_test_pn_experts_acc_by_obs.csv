@@ -1,0 +1,4 @@
+"SampleID";"image_url";"year";"latitude";"longitude";"expected_family";"predicted_family";"acc_familly";"expected_genus";"predicted_genus";"acc_genus"
+11013073;"https://inaturalist-open-data.s3.amazonaws.com/photos/15524040/original.jpg";2016;43.5224767792;-79.8816776276;"Lamiaceae";"Lamiaceae";TRUE;"Mentha";"Mentha";TRUE
+14334545;"https://inaturalist-open-data.s3.amazonaws.com/photos/21298080/original.jpeg";2016;34.1612849243;-81.1746806527;"Celastraceae";"Celastraceae";TRUE;"Euonymus";"Euonymus";TRUE
+69740052;"https://inaturalist-open-data.s3.amazonaws.com/photos/113230781/original.jpeg";2016;44.8982943372;-93.3702924136;"Asteraceae";"Asteraceae";TRUE;"Cirsium";"Cirsium";TRUE

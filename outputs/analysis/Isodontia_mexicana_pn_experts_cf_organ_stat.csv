@@ -1,0 +1,5 @@
+"metric";"value"
+"Number of unique SampleIDs in the initial dataset";1696
+"Number of unique SampleIDs after filtering";1694
+"Macro Accuracy";0.9738
+"Weighted Precision for 'plant_flower'";0.9809

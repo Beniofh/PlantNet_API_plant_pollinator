@@ -1,0 +1,10 @@
+"metric";"value"
+"Number of unique SampleIDs in the initial dataset";1696
+"Number of rows in the filtered data with predicted_organ == 'plant_flower'";966
+"Number of rows in the filtered data with predicted_organ == 'plant_flower' and confidence_score >= 0.5";431
+"Micro accuracy (genus_exp vs predicted_genus)";0.9281
+"Macro accuracy (genus_exp vs predicted_genus)";0.8387
+"Macro accuracy (genus_exp vs predicted_genus) with Bayesian smoothing";0.8843
+"Micro accuracy (family_exp vs predicted_family)";0.9884
+"Macro accuracy (family_exp vs predicted_family)";0.9061
+"Macro accuracy (family_exp vs predicted_family) with Bayesian smoothing";0.9196
