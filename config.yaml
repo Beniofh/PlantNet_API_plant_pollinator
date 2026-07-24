@@ -19,7 +19,7 @@ initialisation:
   # https://my.plantnet.org. Please copy your API key in this config.yaml file in the
   # root directory of the project and save it before running the scripts.
   # /!\ You must put your keyword in quotation marks  
-  plantnet_api_key: "2b10yOzNH0TOmG9yAYu5rY47O"
+  plantnet_api_key: "YOUR_API_KEY"
   # PlantNet API endpoint for flora. It may stop working or change 
   # depending on updates to PlantNet If it stops working, check the website
   # https://my-api.plantnet.org to update it.
