@@ -98,7 +98,7 @@ initialisation:
   plantnet_api_key: "YOUR_API_KEY"
 ```
 
- <strong>With a free standard Pl@ntNet API key, the number of requests is limited to 200 per day. But, if you want to run the workflow with <code>default</code> configuration, you will need to make just under 2,500 requests using the script<code>1_1_identify_plantnet_top5.r</code>.</strong> To resolve this problem, you have three options.
+ <strong>With a free standard Pl@ntNet API key, the number of requests is limited to 500 per day. But, if you want to run the workflow with <code>default</code> configuration, you will need to make just under 2,500 requests using the script<code>1_1_identify_plantnet_top5.r</code>.</strong> To resolve this problem, you have three options.
 1. You can request an increase in your daily query limit. You can do this free of charge, directly from your account page at my.plantnet.org.
 2. The workflow with the <code>yaml_config: test</code> configuration can be run with a free standard Pl@ntNet API key, as it is limited to 51 requests. But it’s just a test to see if it works
 3. You can skip the first few steps of the workflow and start running it from the <code>scr/1_3_histogram_pred_by_area.r</code> script (see the next subsection), as the necessary files have already been pre-generated in the <code>out</code> directory</p>
