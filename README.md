@@ -12,7 +12,7 @@ This repository contains an end-to-end R workflow to:
 
 ### I.1 Objectif
 
-<p align="justify">To illustrate the use of the Pl@ntNet API in XXXX et al. (XXXX), we have drawn inspiration from the approach described by <a href="https://doi.org/10.1002/ece3.11537">(Pernat et al., 2024)</a>: the identification of plants in images of insects sourced from iNaturalist, with a view to studying the relationships between plants and pollinators (<a href="#figure-1">Figure 1</a>). Here, we present a comprehensive and reproducible workflow, inspired by that of Pernat et al. (2024), but more advanced and more reproducible. This GitHub repository enables you to replicate the experiments described in the following two subsections. The code is thoroughly commented to enable the community to generate their own data for other species by specifying geographical coordinates and time periods.
+<p align="justify">To illustrate the use of the Pl@ntNet API in Bourel et al. (XXXX), we have drawn inspiration from the approach described by <a href="https://doi.org/10.1002/ece3.11537">(Pernat et al., 2024)</a>: the identification of plants in images of insects sourced from iNaturalist, with a view to studying the relationships between plants and pollinators (<a href="#figure-1">Figure 1</a>). Here, we present a comprehensive and reproducible workflow, inspired by that of Pernat et al. (2024), but more advanced and more reproducible. This GitHub repository enables you to replicate the experiments described in the following two subsections. The code is thoroughly commented to enable the community to generate their own data for other species by specifying geographical coordinates and time periods.
 </p>
 
 <p align="center">
@@ -132,6 +132,6 @@ Run scripts from the project root, in this order:
 
 ## References
 
-- XXXXXX, X., XXXXXX, X,. XXXXXX, X., XXXXXX, X. (XXXX). Pl@ntNet automated identification service: enabling automated biodiversity monitoring through large-scale plant identification. XXXXXXXXX, XXX,XX. https://doi.org/XXXXXXX
+- Bourel, B., Lombardo, J.C., Joly, A., Chouet M., Paillot, T., Affouard, A., Hequet, V., Goëau, H., & Bonnet, P. (XXXX). Pl@ntNet machine-to-machine identification service with Pl@ntNet API: enabling automated biodiversity monitoring through large-scale plant identification. XXXXXXXXX, XXX,XX. https://doi.org/XXXXXXX
 - Pernat, N., Memedemin, D., August, T., Preda, C., Reyserhove, L., Schirmel, J., & Groom, Q. (2024). Extracting secondary data from citizen science images reveals host flower preferences of the Mexican grass-carrying wasp Isodontia mexicana in its native and introduced ranges. Ecology and Evolution, 14(6), e11537. https://doi.org/10.1002/ece3.11537 
 - Pernat, N. (2024). iNaturalist-Pl@ntNet workflow (Version 0.1.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.11185002
